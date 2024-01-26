@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddl6gw8bnjt62"]
+[gd_scene load_steps=6 format=3 uid="uid://ddl6gw8bnjt62"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_iojoq"]
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="2_fjri5"]
+[ext_resource type="PackedScene" uid="uid://dbvkuk5dfpvvv" path="res://Players/player2.tscn" id="3_v00ut"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ev43e"]
 texture = ExtResource("1_iojoq")
@@ -5341,3 +5342,6 @@ layer_0/tile_data = PackedInt32Array(65537, 589824, 13, 65538, 655360, 13, 65539
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fjri5")]
 position = Vector2(81, -139)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_v00ut")]
+position = Vector2(239, -131)
