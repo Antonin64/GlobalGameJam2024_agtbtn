@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce4qxbty0iogi"]
+
+[ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="1_i0scr"]
+[ext_resource type="PackedScene" uid="uid://dbvkuk5dfpvvv" path="res://Players/player2.tscn" id="2_07d6b"]
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("2_07d6b")]
+position = Vector2(213, 271)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_i0scr")]
+position = Vector2(212, 191)
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(213, 190)
+scale = Vector2(1, 1)
+node_a = NodePath("../CharacterBody2D2")
+node_b = NodePath("../CharacterBody2D")
+disable_collision = false
+length = 80.0
