@@ -73,6 +73,7 @@ func _physics_process(delta):
 		gravity_timer.start()
 		print(Input.get_action_strength("move_up"))
 		velocity.y = - Input.get_action_strength("move_up") * 320
+		velocity.normalized()
 		fart()
 		can_double_jump = false
 		animation.play("jump_right")
@@ -93,12 +94,7 @@ func _physics_process(delta):
 		shoot()
 
 func shoot():
-	shoot_dir.x = -Input.get_action_strength("aim_left") + Input.get_action_strength("aim_right")
-	shoot_dir.y = +Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-	var bullet = bulletPath.instantiate()
-	get_parent().add_child(bullet)
-	bullet.global_position = $Node2D.global_position
-	bullet.bullet_velocity = shoot_dir
+	pass
 
 func _on_gpu_particles_2d_finished():
 	get_tree().change_scene_to_file("res://Menu/Death/DeathTransition.tscn")
