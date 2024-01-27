@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=5 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Texture2D" uid="uid://fwcx4aq8vjdc" path="res://64491.png" id="1_2sxnq"]
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tl0fi"]
 size = Vector2(28.2857, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgxb3"]
+size = Vector2(28, 33)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_10d2o")
@@ -18,3 +21,14 @@ scale = Vector2(1.032, 1)
 texture = ExtResource("1_2sxnq")
 region_enabled = true
 region_rect = Rect2(136.7, 570, 28.6, 34.1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(46, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lgxb3")
