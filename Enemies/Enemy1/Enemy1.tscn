@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsqbnr8ub05c8"]
+
+[ext_resource type="Script" path="res://Enemies/Enemy1/Enemy1.gd" id="1_jlopf"]
+[ext_resource type="Texture2D" uid="uid://bbf1xveomhnah" path="res://Enemies/Enemy1/Dragon_sprite_sheet_noback.png" id="2_vtkmv"]
+
+[sub_resource type="Animation" id="Animation_wtun4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_is71w"]
+resource_name = "fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_vtkmv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucs40"]
+_data = {
+"RESET": SubResource("Animation_wtun4"),
+"fly": SubResource("Animation_is71w")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ulxsn"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lua8c"]
+animation = &"fly"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ju05m"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2vkg1"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_geiil"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yeb0l"]
+states/die/node = SubResource("AnimationNodeAnimation_ulxsn")
+states/die/position = Vector2(633, 99)
+states/fly/node = SubResource("AnimationNodeAnimation_lua8c")
+states/fly/position = Vector2(372, 97)
+transitions = ["Start", "fly", SubResource("AnimationNodeStateMachineTransition_ju05m"), "die", "End", SubResource("AnimationNodeStateMachineTransition_2vkg1"), "fly", "die", SubResource("AnimationNodeStateMachineTransition_geiil")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pb63a"]
+radius = 17.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e230"]
+radius = 17.0
+height = 56.0
+
+[node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_jlopf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Area2D/CollisionShape2D")
+libraries = {
+"": SubResource("AnimationLibrary_ucs40")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vtkmv")
+hframes = 24
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Area2D/CollisionShape2D")
+libraries = {
+"": SubResource("AnimationLibrary_ucs40")
+}
+tree_root = SubResource("AnimationNodeStateMachine_yeb0l")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, -5)
+shape = SubResource("CapsuleShape2D_pb63a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -5)
+shape = SubResource("CapsuleShape2D_4e230")
