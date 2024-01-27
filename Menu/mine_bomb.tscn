@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvqe4cd3c1ivg"]
-
-[ext_resource type="Texture2D" uid="uid://laesd46d6k6m" path="res://Traps/Explosive lethal weapon cartoon illustration set.png" id="1_b43og"]
-
-[node name="Mine" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_b43og")
