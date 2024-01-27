@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8s6e3c5twxdv"]
+
+[ext_resource type="Texture2D" uid="uid://cnk73ihvf6qp1" path="res://sprite/parallax_forest_pack/parallax_forest_pack/layers/parallax-forest-back-trees.png" id="1_55iup"]
+[ext_resource type="Texture2D" uid="uid://dd5glga17f3f" path="res://sprite/parallax_forest_pack/parallax_forest_pack/layers/parallax-forest-lights.png" id="2_ueerq"]
+[ext_resource type="Texture2D" uid="uid://blclleunhsl62" path="res://sprite/parallax_forest_pack/parallax_forest_pack/layers/parallax-forest-middle-trees.png" id="3_sr7bl"]
+[ext_resource type="Texture2D" uid="uid://ckiwhocjkwkla" path="res://sprite/parallax_forest_pack/parallax_forest_pack/layers/parallax-forest-front-trees.png" id="4_i75nx"]
+
+[node name="MapTropic" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_end = Vector2(544, 320)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_55iup")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_ueerq")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_sr7bl")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("4_i75nx")
