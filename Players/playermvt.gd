@@ -36,18 +36,26 @@ func die():
 	preload("res://Menu/Death/DeathTransition.tscn")
 	if $GPUParticles2D.emitting == false:
 		$GPUParticles2D.emitting = true
+		
+func jump_pad():
+	velocity.y = JUMP_VELOCITY * 1.4
+	coyote_timer.stop()
+	gravity_timer.start()
+	animation.play("jump_right")
 
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
 	if (!is_living):
 		return
-	if move_dir < 0 && is_on_floor():
+	if move_dir < 0:
 		sprite.flip_h = 1
-		animation.play("walk_right")
-	elif move_dir > 0 && is_on_floor():
+		if is_on_floor():
+			animation.play("walk_right")
+	elif move_dir > 0:
 		sprite.flip_h = 0
-		animation.play("walk_right")
+		if is_on_floor():
+			animation.play("walk_right")
 	elif is_on_floor():
 		animation.play("idle")
 	
