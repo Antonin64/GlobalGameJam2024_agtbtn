@@ -9,6 +9,8 @@ var shoot_dir = Vector2(0, 0) #on 360°
 var can_double_jump = false
 var last_jump = 0
 var is_living = true
+var boosted_dir = 0
+var boosted_time = 0
 const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -51,7 +53,9 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		can_double_jump = true
-	if not is_on_floor():
+		boosted_dir = 0
+		boosted_time = 0
+	if not is_on_floor() && boosted_time == 0:
 		var amplifier = 1.0
 		if gravity_timer.is_stopped():
 			amplifier = 1.75
@@ -64,8 +68,10 @@ func _physics_process(delta):
 		gravity_timer.start()
 		animation.play("jump_right")
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
-		velocity.y = JUMP_VELOCITY * 1.15
+		boosted_dir = move_dir * 3
+		boosted_time = 10
 		gravity_timer.start()
+		velocity.y = 0
 		fart()
 		can_double_jump = false
 		animation.play("jump_right")
@@ -73,6 +79,9 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = move_dir
+	if boosted_time > 0 && !is_on_floor():
+		direction = boosted_dir
+		boosted_time -= 1
 	if direction:
 		velocity.x = direction * SPEED * speed_amplifier
 	else:

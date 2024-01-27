@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyl3byfeeb71n"]
+[gd_scene load_steps=3 format=3 uid="uid://cyl3byfeeb71n"]
 
 [ext_resource type="Script" path="res://Traps/spiketrap/spike_trap.gd" id="1_tl75v"]
 [ext_resource type="Texture2D" uid="uid://55kb5holhc2q" path="res://Traps/spiketrap/long_metal_spike.png" id="1_x677l"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7i0s"]
 
 [node name="SpikeTrap" type="Node2D"]
 script = ExtResource("1_tl75v")
@@ -17,7 +15,7 @@ texture = ExtResource("1_x677l")
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_x7i0s")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -10, 10, 10, -10, 10)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
