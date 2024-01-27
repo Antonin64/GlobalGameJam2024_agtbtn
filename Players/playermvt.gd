@@ -28,9 +28,11 @@ func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
 	if move_dir < 0:
-		animated_sprite.flip_h = 1
+		animated_sprite.play("run_left")
 	elif move_dir > 0:
-		animated_sprite.flip_h = 0
+		animated_sprite.play("run_right")
+	else:
+		animated_sprite.play("Idle")
 	
 	if is_on_floor():
 		can_double_jump = true
@@ -39,11 +41,9 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
-		animated_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
 		coyote_timer.start()
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
-		animated_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
 		fart()
 		can_double_jump = false
@@ -53,11 +53,7 @@ func _physics_process(delta):
 	var direction = move_dir
 	if direction:
 		velocity.x = direction * SPEED
-		if (is_on_floor()):
-			animated_sprite.play("run")
 	else:
-		if is_on_floor():
-			animated_sprite.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2jebchuld8ph"
-path="res://.godot/imported/Walk (1).png-408754233cc7a8e4eecc348206ee335a.ctex"
+uid="uid://dtkoysf81nema"
+path="res://.godot/imported/Small-8-Direction-Characters_by_AxulArt.png-de558083fc7a2ca5c924e3b10c524a49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Walk (1).png"
-dest_files=["res://.godot/imported/Walk (1).png-408754233cc7a8e4eecc348206ee335a.ctex"]
+source_file="res://assets/player/Small-8-Direction-Characters_by_AxulArt.png"
+dest_files=["res://.godot/imported/Small-8-Direction-Characters_by_AxulArt.png-de558083fc7a2ca5c924e3b10c524a49.ctex"]
 
 [params]
 
