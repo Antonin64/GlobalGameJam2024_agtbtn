@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://caaikdcvngdu5"]
+[gd_scene load_steps=7 format=3 uid="uid://caaikdcvngdu5"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_b5lag"]
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="2_xwtf0"]
-[ext_resource type="PackedScene" uid="uid://3wgwilssrdns" path="res://Traps/mine.tscn" id="3_moi7g"]
+[ext_resource type="PackedScene" uid="uid://3wgwilssrdns" path="res://Traps/mine/mine.tscn" id="3_ukbyr"]
+[ext_resource type="PackedScene" uid="uid://cyl3byfeeb71n" path="res://Traps/spiketrap/spike_trap.tscn" id="4_hjlao"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u81hq"]
 texture = ExtResource("1_b5lag")
@@ -18844,4 +18845,7 @@ layer_0/tile_data = PackedInt32Array(65486, 1769473, 26, 131022, 1179649, 27, 19
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_xwtf0")]
 position = Vector2(175, -84)
 
-[node name="Mine" parent="." instance=ExtResource("3_moi7g")]
+[node name="Mine" parent="." instance=ExtResource("3_ukbyr")]
+
+[node name="SpikeTrap" parent="." instance=ExtResource("4_hjlao")]
+position = Vector2(-45, -9)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=14 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 [ext_resource type="PackedScene" uid="uid://coqjlufwtrms4" path="res://Players/fart_particles.tscn" id="2_6mmvh"]
@@ -75,6 +75,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mkmub"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 0.176471, 0, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 17
 collision_mask = 17
@@ -82,7 +92,7 @@ script = ExtResource("1_10d2o")
 fart_particles = ExtResource("2_6mmvh")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -94,3 +104,16 @@ position = Vector2(0, -0.499999)
 scale = Vector2(1.75, 1.375)
 sprite_frames = SubResource("SpriteFrames_jyrxs")
 animation = &"Idle"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -5)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_mkmub")
+one_shot = true
+explosiveness = 1.0
+
+[node name="DoYouBelieveInGravity?" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

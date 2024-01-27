@@ -1,20 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://3wgwilssrdns"]
 
-[ext_resource type="Texture2D" uid="uid://laesd46d6k6m" path="res://Traps/Explosive lethal weapon cartoon illustration set.png" id="1_fbthy"]
-[ext_resource type="Script" path="res://Traps/mine_bomb.gd" id="2_14jfs"]
+[ext_resource type="Texture2D" uid="uid://laesd46d6k6m" path="res://Traps/mine/Explosive lethal weapon cartoon illustration set.png" id="1_gwbmm"]
+[ext_resource type="Script" path="res://Traps/mine/mine_bomb.gd" id="2_0mekt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy2s4"]
 size = Vector2(600, 233.334)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_73w6i"]
 particle_flag_disable_z = true
-spread = 180.0
-initial_velocity_min = 30.0
-initial_velocity_max = 75.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 40.0
+initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
-scale_max = 2.0
-color = Color(1, 0.176471, 0, 1)
+scale_max = 4.0
+color = Color(0.615686, 0.596078, 0.172549, 1)
 
 [node name="Mine" type="Node2D"]
 
@@ -30,13 +31,13 @@ shape = SubResource("RectangleShape2D_yy2s4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 scale = Vector2(0.015, 0.015)
-texture = ExtResource("1_fbthy")
-script = ExtResource("2_14jfs")
+texture = ExtResource("1_gwbmm")
+script = ExtResource("2_0mekt")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -5)
 emitting = false
-amount = 50
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_73w6i")
 one_shot = true
 explosiveness = 1.0

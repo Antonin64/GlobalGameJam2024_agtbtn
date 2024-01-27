@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
+@onready var gravity_timer = $"DoYouBelieveInGravity?"
 @export var fart_particles : PackedScene
 
 func fart():
@@ -23,6 +24,11 @@ func fart():
 	add_child(fart_instance)
 	fart_instance.emitting = true
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
+	
+func die():
+	$AnimatedSprite2D.hide()
+	preload("res://Menu/Death/DeathTransition.tscn")
+	$GPUParticles2D.emitting = true
 
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
@@ -37,14 +43,19 @@ func _physics_process(delta):
 	if is_on_floor():
 		can_double_jump = true
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		var amplifier = 1.0
+		if gravity_timer.is_stopped():
+			amplifier = 1.75
+		velocity.y += gravity * delta * amplifier
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 0.80
 		coyote_timer.start()
+		gravity_timer.start()
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 1.15
+		gravity_timer.start()
 		fart()
 		can_double_jump = false
 
@@ -68,5 +79,5 @@ func shoot():
 	bullet.global_position = $Node2D.global_position
 	bullet.bullet_velocity = shoot_dir
 
-func mine_exploded():
-	print("a")
+func _on_gpu_particles_2d_finished():
+	get_tree().change_scene_to_file("res://Menu/Death/DeathTransition.tscn")
