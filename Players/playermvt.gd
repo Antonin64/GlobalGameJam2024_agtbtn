@@ -12,21 +12,23 @@ const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var coyote_timer = $CoyoteTimer
+@onready var sprite = $"Sprite2D"
+@onready var coyote_timer = $"CoyoteTimer"
 @onready var gravity_timer = $"DoYouBelieveInGravity?"
+@onready var animation = $Sprite2D/AnimationPlayer
 @export var fart_particles : PackedScene
+@export var speed_amplifier = 0.75
 
 func fart():
 	var fart_instance : GPUParticles2D = fart_particles.instantiate()
-	fart_instance.position = animated_sprite.position
+	fart_instance.position = sprite.position
 	fart_instance.position.y += 15
 	add_child(fart_instance)
 	fart_instance.emitting = true
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
 	
 func die():
-	$AnimatedSprite2D.hide()
+	$Sprite2D.hide()
 	preload("res://Menu/Death/DeathTransition.tscn")
 	$GPUParticles2D.emitting = true
 
@@ -34,11 +36,13 @@ func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
 	if move_dir < 0:
-		animated_sprite.play("run_left")
+		sprite.flip_h = 1
+		animation.play("walk_right")
 	elif move_dir > 0:
-		animated_sprite.play("run_right")
-	else:
-		animated_sprite.play("Idle")
+		sprite.flip_h = 0
+		animation.play("walk_right")
+	elif is_on_floor():
+		animation.play("idle")
 	
 	if is_on_floor():
 		can_double_jump = true
@@ -53,17 +57,19 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY * 0.80
 		coyote_timer.start()
 		gravity_timer.start()
+		animation.play("jump_right")
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
 		velocity.y = JUMP_VELOCITY * 1.15
 		gravity_timer.start()
 		fart()
 		can_double_jump = false
+		animation.play("jump_right")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = move_dir
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * speed_amplifier
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
