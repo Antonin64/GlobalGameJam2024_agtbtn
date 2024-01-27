@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bttwcqs3j47c5"]
 
-[ext_resource type="Script" path="res://Menu/LoadingScreen.gd" id="1_5310k"]
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_j47x4"]
-file = "res://assets/video/LoadingVideo.ogv"
+[ext_resource type="VideoStream" path="res://assets/video/Bacon.ogv" id="1_5ys3i"]
+[ext_resource type="Script" path="res://Menu/Loading/LoadingScript.gd" id="1_aiwvo"]
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer"]
 anchors_preset = 15
@@ -11,11 +9,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = SubResource("VideoStreamTheora_j47x4")
+stream = ExtResource("1_5ys3i")
 autoplay = true
 expand = true
 loop = true
-script = ExtResource("1_5310k")
+script = ExtResource("1_aiwvo")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

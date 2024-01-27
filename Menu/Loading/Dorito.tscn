@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgedfw6xuxaxa"]
+
+[ext_resource type="Script" path="res://Menu/Loading/LoadingScript.gd" id="1_pwnkd"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_vcvvn"]
+file = "res://assets/video/Dorito.ogv"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_vcvvn")
+autoplay = true
+expand = true
+loop = true
+script = ExtResource("1_pwnkd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -23.0
+offset_right = 31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Loading"
+vertical_alignment = 2
