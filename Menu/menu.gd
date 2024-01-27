@@ -7,11 +7,9 @@ func _ready():
 	$Menu/ButtonsContainer/Start.grab_focus()
 
 func _on_start_pressed():
+	Global.scene = "res://map/didac_map.tscn"
 	var randint = rng.randi_range(0, videos.size() - 1)
-	print(randint)
 	get_tree().change_scene_to_file(videos[randint])
-
-
 
 func _on_quit_pressed():
 	get_tree().quit()
