@@ -55,6 +55,7 @@ func _physics_process(delta):
 		can_double_jump = true
 		boosted_dir = 0
 		boosted_time = 0
+		coyote_timer.start()
 	if not is_on_floor() && boosted_time == 0:
 		var amplifier = 1.0
 		if gravity_timer.is_stopped():
@@ -64,14 +65,14 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
 		velocity.y = JUMP_VELOCITY * 0.80
-		coyote_timer.start()
 		gravity_timer.start()
 		animation.play("jump_right")
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
 		boosted_dir = move_dir * 3
 		boosted_time = 10
 		gravity_timer.start()
-		velocity.y = 0
+		print(Input.get_action_strength("move_up"))
+		velocity.y = - Input.get_action_strength("move_up") * 320
 		fart()
 		can_double_jump = false
 		animation.play("jump_right")
