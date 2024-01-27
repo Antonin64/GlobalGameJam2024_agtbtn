@@ -8,7 +8,7 @@ var player = null
 
 @export var speed = 0
 
-var last_position
+var last_position = 0
 
 func _ready():
 	player = get_node("../../../../../CharacterBody2D")

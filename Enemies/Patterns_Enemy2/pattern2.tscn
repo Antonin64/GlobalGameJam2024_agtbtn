@@ -4,9 +4,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_3ircs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 152, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 141, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
+point_count = 3
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,7 +14,6 @@ point_count = 4
 curve = SubResource("Curve2D_3ircs")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-0.106689, 0)
 rotates = false
 
 [node name="CharacterBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("1_2i1ia")]
