@@ -30,11 +30,13 @@ theme_override_constants/separation = 100
 
 [node name="Start" type="Button" parent="Menu/ButtonsContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 40
 text = "Start"
 
 [node name="Quit" type="Button" parent="Menu/ButtonsContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
