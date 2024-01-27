@@ -7,9 +7,12 @@ const JUMP_VELOCITY = -400.0
 var move_dir = 0 #only on x
 var shoot_dir = Vector2(0, 0) #on 360°
 var can_double_jump = false
+var last_jump = 0
 const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+@onready var coyote_timer = $CoyoteTimer
 
 func fart():
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
@@ -17,14 +20,17 @@ func fart():
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
+	
+	if is_on_floor():
+		can_double_jump = true
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
 		velocity.y = JUMP_VELOCITY
-		can_double_jump = true
-	if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
+		coyote_timer.start()
+	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump:
 		velocity.y = JUMP_VELOCITY
 		fart()
 		can_double_jump = false
