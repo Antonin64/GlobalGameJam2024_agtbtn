@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://coqjlufwtrms4"]
+
+[ext_resource type="Script" path="res://Players/fart_particles.gd" id="1_aiaxg"]
+
+[sub_resource type="Curve" id="Curve_wu5j5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_otb23"]
+curve = SubResource("Curve_wu5j5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2nta7"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_otb23")
+color = Color(0.258824, 0.196078, 0.0901961, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_2nta7")
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+script = ExtResource("1_aiaxg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -13,8 +13,14 @@ const bulletPath = preload('res://weapons/bullet.tscn')
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var coyote_timer = $CoyoteTimer
+@export var fart_particles : PackedScene
 
 func fart():
+	var fart_instance : GPUParticles2D = fart_particles.instantiate()
+	fart_instance.position = $Sprite2D.position
+	fart_instance.position.y += 15
+	add_child(fart_instance)
+	fart_instance.emitting = true
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
 
 func _physics_process(delta):
@@ -54,3 +60,6 @@ func shoot():
 	get_parent().add_child(bullet)
 	bullet.global_position = $Node2D.global_position
 	bullet.bullet_velocity = shoot_dir
+
+func mine_exploded():
+	print("a")
