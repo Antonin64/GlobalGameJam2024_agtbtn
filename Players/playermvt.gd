@@ -12,8 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	shoot_dir.x = -Input.get_action_strength("aim_left") + Input.get_action_strength("aim_right")
-	shoot_dir.y = +Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,11 +32,11 @@ func _physics_process(delta):
 	move_and_slide()
 	if Input.is_action_just_pressed("main_shoot"):
 		shoot()
-	#$Node2D.rotate(shoot_dir.angle())
-	$Node2D.look_at(get_global_mouse_position())
 
 func shoot():
+	shoot_dir.x = -Input.get_action_strength("aim_left") + Input.get_action_strength("aim_right")
+	shoot_dir.y = +Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
-	bullet.position = $Node2D/Marker2D.global_position
-	bullet.bullet_velocity = shoot_dir * 500
+	bullet.global_position = $Node2D.global_position
+	bullet.bullet_velocity = shoot_dir

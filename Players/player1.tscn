@@ -24,9 +24,6 @@ region_rect = Rect2(136.7, 570, 28.6, 34.1)
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="Node2D"]
-position = Vector2(46, 0)
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
