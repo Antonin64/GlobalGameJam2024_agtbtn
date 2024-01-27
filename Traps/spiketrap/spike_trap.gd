@@ -13,6 +13,6 @@ func Kill():
 
 func _on_area_2d_body_entered(body):
 	print("b")
+	Kill()
 	if body == player:
 		player.die()
-	Kill()

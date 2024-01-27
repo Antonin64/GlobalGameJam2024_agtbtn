@@ -8,6 +8,7 @@ var move_dir = 0 #only on x
 var shoot_dir = Vector2(0, 0) #on 360°
 var can_double_jump = false
 var last_jump = 0
+var is_living = true
 const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -28,17 +29,21 @@ func fart():
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
 	
 func die():
+	is_living = false
 	$Sprite2D.hide()
 	preload("res://Menu/Death/DeathTransition.tscn")
-	$GPUParticles2D.emitting = true
+	if $GPUParticles2D.emitting == false:
+		$GPUParticles2D.emitting = true
 
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
-	if move_dir < 0:
+	if (!is_living):
+		return
+	if move_dir < 0 && is_on_floor():
 		sprite.flip_h = 1
 		animation.play("walk_right")
-	elif move_dir > 0:
+	elif move_dir > 0 && is_on_floor():
 		sprite.flip_h = 0
 		animation.play("walk_right")
 	elif is_on_floor():
