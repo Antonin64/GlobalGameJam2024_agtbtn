@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddl6gw8bnjt62"]
+[gd_scene load_steps=6 format=3 uid="uid://c8xwpk23tk8kx"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_iojoq"]
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="2_fjri5"]

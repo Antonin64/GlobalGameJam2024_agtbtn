@@ -14,6 +14,8 @@ format = 2
 scroll_limit_end = Vector2(544, 320)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(1270, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("1_55iup")
