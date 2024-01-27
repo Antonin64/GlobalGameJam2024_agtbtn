@@ -1,9 +1,9 @@
 extends Sprite2D
 
-func _ready():
-	await get_tree().create_timer(1).timeout
-	Kill()
-
 func Kill():
 	$"../GPUParticles2D".emitting = true
 	queue_free()
+
+func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	emit_signal("mine_exploded")
+	Kill()
