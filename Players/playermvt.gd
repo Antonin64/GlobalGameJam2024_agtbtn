@@ -63,6 +63,11 @@ func jump_pad_left(rotation):
 	gravity_timer.start()
 	await get_tree().create_timer(0.01).timeout
 	animation.play("jump_right")
+	
+func dash(amt):
+	can_double_jump = true
+	boosted_dir = amt
+	boosted_time = 10
 
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
