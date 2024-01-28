@@ -15,6 +15,7 @@ const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var on_floor_before = false
+var can_fart = true
 
 @onready var sprite = $"Sprite2D"
 @onready var coyote_timer = $"CoyoteTimer"
@@ -29,7 +30,8 @@ func fart():
 	fart_instance.position.y += 15
 	add_child(fart_instance)
 	fart_instance.emitting = true
-	Input.start_joy_vibration(0,0.35,0.35,0.5)
+	if can_fart:
+		Input.start_joy_vibration(0,0.35,0.35,0.5)
 	
 func die():
 	$AudioStreamPlayer3.play()

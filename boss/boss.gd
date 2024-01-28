@@ -24,6 +24,7 @@ func _process(delta):
 			transition = false
 			$GPUParticles2D.emitting = false
 			$Animation.stop()
+			get_node("../../CharacterBody2D").can_fart = true
 			if phase == 2:
 				$Animation.play("phase2", -1, 1, false)
 				attack_speed = 1
@@ -51,7 +52,7 @@ func _process(delta):
 					fire_poop_red()
 
 func fire_poop():
-	var player_pos = get_parent().get_parent().get_node("Player").global_position
+	var player_pos = get_parent().get_parent().get_node("CharacterBody2D").global_position
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.look_at(player_pos)
@@ -59,7 +60,7 @@ func fire_poop():
 	bullet.bullet_velocity = player_pos - self.global_position
 
 func fire_poop_red():
-	var player_pos = get_parent().get_parent().get_node("Player").global_position
+	var player_pos = get_parent().get_parent().get_node("CharacterBody2D").global_position
 	var bullet = bulletPathRed.instantiate()
 	get_parent().add_child(bullet)
 	bullet.look_at(player_pos)
@@ -75,3 +76,5 @@ func lose_hp():
 		transition = true
 		$GPUParticles2D.emitting = true
 		$transition_fart.play()
+		Input.start_joy_vibration(0,1,1,8.0)
+		get_node("../../CharacterBody2D").can_fart = false
