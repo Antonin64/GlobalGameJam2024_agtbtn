@@ -16,10 +16,9 @@ func Kill():
 
 func _on_area_2d_body_entered(body):
 	if body == player && timer.is_stopped():
+		timer.start()
 		var jumpDir = Vector2(0, -1).rotated(deg_to_rad(rotation_degrees))
 		var velocity = jumpDir.normalized()
 		player.velocity.y = velocity.y * 500
 		player.dash(velocity.x * 4)
 		animation.play("animate")
-		await get_tree().create_timer(0.1).timeout
-		timer.start()

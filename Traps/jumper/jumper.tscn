@@ -75,7 +75,7 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.45
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
