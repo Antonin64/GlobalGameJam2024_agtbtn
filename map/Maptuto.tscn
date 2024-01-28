@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bex30uc8uwdv3" path="res://map/parallax_background.tscn" id="6_riavu"]
 [ext_resource type="PackedScene" uid="uid://3wgwilssrdns" path="res://Traps/mine/mine.tscn" id="7_ahim8"]
 [ext_resource type="PackedScene" uid="uid://bmecfe2pe3d21" path="res://Enemies/Patterns_Enemy1/pattern2.tscn" id="8_r1qia"]
-[ext_resource type="PackedScene" uid="uid://b1eq062n1j3xl" path="res://moving_platform.tscn" id="9_wa5h8"]
-[ext_resource type="PackedScene" uid="uid://b44qf66n42d7j" path="res://Enemies/Patterns_Enemy2/pattern3.tscn" id="10_01yre"]
+[ext_resource type="PackedScene" path="res://moving_platform.tscn" id="9_wa5h8"]
+[ext_resource type="PackedScene" path="res://Enemies/Patterns_Enemy2/pattern3.tscn" id="10_01yre"]
 [ext_resource type="PackedScene" uid="uid://b57vwrxkwsld1" path="res://Traps/jumper/jumper.tscn" id="11_0t5sh"]
-[ext_resource type="PackedScene" uid="uid://bl3f3rxnthbsk" path="res://Enemies/Patterns_Enemy1/pattern3.tscn" id="12_782gl"]
+[ext_resource type="PackedScene" path="res://Enemies/Patterns_Enemy1/pattern3.tscn" id="12_782gl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfr2s"]
 texture = ExtResource("2_45k8j")
@@ -869,6 +869,9 @@ position = Vector2(1517, -339)
 
 [node name="Dragons" type="Node2D" parent="."]
 
+[node name="Flying Enemy 2" parent="Dragons" instance=ExtResource("12_782gl")]
+position = Vector2(1519, -133)
+
 [node name="Flying Enemy 1" parent="Dragons" instance=ExtResource("8_r1qia")]
 position = Vector2(219, 20)
 rotation = 3.14159
@@ -1334,9 +1337,6 @@ position = Vector2(1335, -339)
 
 [node name="Jumper4" parent="Jumpers" instance=ExtResource("11_0t5sh")]
 position = Vector2(915, -340)
-
-[node name="Node2D" parent="." instance=ExtResource("12_782gl")]
-position = Vector2(1519, -133)
 
 [node name="Mine4" parent="." instance=ExtResource("7_ahim8")]
 position = Vector2(1656, -67)
