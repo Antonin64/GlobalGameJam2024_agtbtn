@@ -20,9 +20,6 @@ func _on_area_2d_body_entered(body):
 		var velocity = jumpDir.normalized()
 		player.velocity.y = velocity.y * 500
 		player.dash(velocity.x * 4)
-		
-		return
 		animation.play("animate")
 		await get_tree().create_timer(0.1).timeout
-		player.jump_pad(rotation_degrees)
 		timer.start()
