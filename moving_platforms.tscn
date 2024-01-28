@@ -1,12 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccaugeti1brq"]
+[gd_scene load_steps=7 format=3 uid="uid://ccaugeti1brq"]
 
 [ext_resource type="Texture2D" uid="uid://ckc5nahjnb1r3" path="res://map/warped-files/warped-files/PNG/environment/layers/tilesets.png" id="1_ngeoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piwtm"]
-size = Vector2(80, 16)
+size = Vector2(40, 16)
 
 [sub_resource type="Animation" id="Animation_5wjxo"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -191)]
+}
 
 [sub_resource type="Animation" id="Animation_keril"]
 resource_name = "move-loop"
@@ -25,13 +37,32 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(270, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_v2gpe"]
+resource_name = "move_updown"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -191), Vector2(0, -426)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fq8o7"]
 _data = {
 "RESET": SubResource("Animation_5wjxo"),
-"move-loop": SubResource("Animation_keril")
+"move-loop": SubResource("Animation_keril"),
+"move_updown": SubResource("Animation_v2gpe")
 }
 
 [node name="MovingPlatform" type="Node2D"]
+position = Vector2(0, -191)
 metadata/_edit_group_ = true
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
@@ -39,18 +70,13 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
 texture = ExtResource("1_ngeoo")
 region_enabled = true
-region_rect = Rect2(31.4997, 15.5866, 80.5003, 16.4134)
+region_rect = Rect2(71.1429, 15.5464, 40.8571, 16.4536)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 shape = SubResource("RectangleShape2D_piwtm")
+metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
-libraries = {
-"": SubResource("AnimationLibrary_fq8o7")
-}
-autoplay = "move-loop"
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Platform"]
 libraries = {
 "": SubResource("AnimationLibrary_fq8o7")
 }

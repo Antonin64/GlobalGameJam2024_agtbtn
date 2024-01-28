@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44qf66n42d7j"]
+
+[ext_resource type="PackedScene" uid="uid://clkng56225tkv" path="res://Enemies/Enemy2/Enemy2.tscn" id="1_ogo63"]
+
+[sub_resource type="Curve2D" id="Curve2D_3ircs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3ircs")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="CharacterBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("1_ogo63")]
+speed = 50
