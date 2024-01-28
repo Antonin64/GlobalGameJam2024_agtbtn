@@ -11,9 +11,9 @@ var last_position = 0
 
 func get_animation_for(direction: Vector2):
 	if direction.x < 0:
-		scale.x = -1
-	if direction.x > 0:
 		scale.x = 1
+	if direction.x > 0:
+		scale.x = -1
 
 func _ready():
 	player = get_node("../../../../../CharacterBody2D")

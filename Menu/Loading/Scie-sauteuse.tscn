@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://btiyg3lj06wnl"]
+[gd_scene load_steps=4 format=3 uid="uid://btiyg3lj06wnl"]
 
 [ext_resource type="VideoStream" path="res://assets/video/Scie-Sauteuse.ogv" id="1_h44e4"]
 [ext_resource type="Script" path="res://Menu/Loading/LoadingScript.gd" id="2_4jp6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qa6m0"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer"]
 anchors_preset = 15
@@ -29,4 +32,5 @@ offset_right = 31.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Loading"
+label_settings = SubResource("LabelSettings_qa6m0")
 vertical_alignment = 2
