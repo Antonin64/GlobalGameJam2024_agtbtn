@@ -239,7 +239,7 @@ explosiveness = 1.0
 wait_time = 0.25
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3.5, 3.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pmc0t")
