@@ -21,4 +21,5 @@ func _on_area_2d_body_entered(body):
 		var velocity = jumpDir.normalized()
 		player.velocity.y = velocity.y * 500
 		player.dash(velocity.x * 4)
+		$AudioStreamPlayer2D.play()
 		animation.play("animate")
