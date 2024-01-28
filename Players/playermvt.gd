@@ -31,6 +31,7 @@ func fart():
 	Input.start_joy_vibration(0,0.35,0.35,0.5)
 	
 func die():
+	$AudioStreamPlayer3.play()
 	is_living = false
 	$Sprite2D.hide()
 	preload("res://Menu/Death/DeathTransition.tscn")
@@ -60,6 +61,8 @@ func _physics_process(delta):
 		animation.play("idle")
 	
 	if is_on_floor():
+		if coyote_timer.time_left == 0:
+			$AudioStreamPlayer2.play()
 		can_double_jump = true
 		boosted_dir = 0
 		boosted_time = 0
@@ -72,6 +75,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
+		$AudioStreamPlayer.play()
 		velocity.y = JUMP_VELOCITY * 0.80
 		gravity_timer.start()
 		animation.play("jump_right")

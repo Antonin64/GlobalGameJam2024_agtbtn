@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://coqjlufwtrms4"]
+[gd_scene load_steps=6 format=3 uid="uid://coqjlufwtrms4"]
 
 [ext_resource type="Script" path="res://Players/fart_particles.gd" id="1_aiaxg"]
+[ext_resource type="AudioStream" uid="uid://dtthdwt5nw8v1" path="res://Players/sfx_8_-_fart.wav" id="2_bo2wx"]
 
 [sub_resource type="Curve" id="Curve_wu5j5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -32,5 +33,8 @@ script = ExtResource("1_aiaxg")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bo2wx")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

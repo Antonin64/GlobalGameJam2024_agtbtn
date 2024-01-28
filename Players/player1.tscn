@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=14 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 [ext_resource type="PackedScene" uid="uid://coqjlufwtrms4" path="res://Players/fart_particles.tscn" id="2_6mmvh"]
+[ext_resource type="AudioStream" uid="uid://je616gqok2yh" path="res://Players/sfx_7_-_landing.wav" id="3_2ks8d"]
 [ext_resource type="Texture2D" uid="uid://okrql7ldrfpg" path="res://Players/Goblin King Sprite Sheet.png" id="3_xvimr"]
+[ext_resource type="AudioStream" uid="uid://c0y5n3k0s8q52" path="res://Players/sfx_6_-_jump.wav" id="4_pmc0t"]
+[ext_resource type="AudioStream" uid="uid://owxf43iqmrj8" path="res://Players/sfx_10_die.mp3" id="6_x3830"]
 
 [sub_resource type="Animation" id="Animation_07ecv"]
 resource_name = "idle"
@@ -161,6 +164,10 @@ collision_mask = 17
 script = ExtResource("1_10d2o")
 fart_particles = ExtResource("2_6mmvh")
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2ks8d")
+volume_db = -8.0
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
@@ -196,5 +203,11 @@ wait_time = 0.25
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pmc0t")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x3830")
 
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
