@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var bullet_velocity = Vector2(1, 0)
 var speed =  450
-var playerPath = "../../../Node2D/Player"
+var playerPath = "../../../Node2D/CharacterBody2D"
 
 func _ready():
 	$fire_poop/AnimationPlayer.play("fire_anim", -1, 1, false)

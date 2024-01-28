@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2ada8b3gehdo"]
+[gd_scene load_steps=13 format=3 uid="uid://d2ada8b3gehdo"]
 
 [ext_resource type="Texture2D" uid="uid://by0plbklaixr8" path="res://boss/boss_all_phase.png" id="1_cidqk"]
 [ext_resource type="Script" path="res://boss/boss.gd" id="2_pv6rb"]
 [ext_resource type="PackedScene" uid="uid://p4gntn2ynju" path="res://boss/boss_particles.tscn" id="3_tm0vq"]
 [ext_resource type="AudioStream" uid="uid://crkbykfgxuis2" path="res://boss/transition_fart.ogg" id="4_2q25u"]
+[ext_resource type="PackedScene" path="res://boss/boss_particles2.tscn" id="5_rei6i"]
 
 [sub_resource type="Animation" id="Animation_6dxav"]
 length = 0.001
@@ -137,6 +138,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgj8p"]
+radius = 3.34427
+height = 19.463
 
 [node name="Boss" type="Sprite2D"]
 scale = Vector2(-1, 1)
@@ -155,7 +158,7 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(16.4, -16.16)
+scale = Vector2(12.8578, -5.75452)
 shape = SubResource("CapsuleShape2D_pgj8p")
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("3_tm0vq")]
@@ -163,3 +166,6 @@ shape = SubResource("CapsuleShape2D_pgj8p")
 [node name="transition_fart" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_2q25u")
 volume_db = 12.0
+
+[node name="GPUParticles2D2" parent="." instance=ExtResource("5_rei6i")]
+position = Vector2(0, -1)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var bullet_velocity = Vector2(1, 0)
-var speed =  300
+var speed =  375
 var playerPath = "../../../Node2D/CharacterBody2D"
 
 func _ready():
@@ -21,3 +21,4 @@ func _on_area_2d_area_entered(area):
 		$Area2D.set_collision_mask_value(6, true)
 	if area == get_node("../Boss/Area2D"):
 		get_parent().get_node("Boss").lose_hp()
+		queue_free()

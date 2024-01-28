@@ -69,6 +69,7 @@ func fire_poop_red():
 
 func lose_hp():
 	hp -= 1
+	$GPUParticles2D2.restart()
 	if hp == 0:
 		phase += 1
 		time_anim = 0
