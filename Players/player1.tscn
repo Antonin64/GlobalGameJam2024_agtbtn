@@ -206,7 +206,7 @@ stream = ExtResource("3_2ks8d")
 volume_db = -8.0
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.1
 one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

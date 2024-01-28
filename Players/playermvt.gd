@@ -102,8 +102,9 @@ func _physics_process(delta):
 		$Node2D/brosse_pos/brosse/return_poop.play("return_anim", -1, 1, false)
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor()):
+	if Input.is_action_just_pressed("jump") and (is_on_floor() || !coyote_timer.is_stopped()):
 		$AudioStreamPlayer.play()
+		coyote_timer.stop()
 		velocity.y = JUMP_VELOCITY * 0.80
 		gravity_timer.start()
 		animation.play("jump_right")
