@@ -39,10 +39,29 @@ func die():
 	if $GPUParticles2D.emitting == false:
 		$GPUParticles2D.emitting = true
 		
-func jump_pad():
+func jump_pad(rotation):
 	velocity.y = JUMP_VELOCITY * 1.4
 	coyote_timer.stop()
 	gravity_timer.start()
+	await get_tree().create_timer(0.01).timeout
+	animation.play("jump_right")
+	
+func jump_pad_right(rotation):
+	boosted_dir = 4
+	boosted_time = 10
+	velocity.y = 0
+	coyote_timer.stop()
+	gravity_timer.start()
+	await get_tree().create_timer(0.01).timeout
+	animation.play("jump_right")
+	
+func jump_pad_left(rotation):
+	boosted_dir = -4
+	boosted_time = 10
+	velocity.y = 0
+	coyote_timer.stop()
+	gravity_timer.start()
+	await get_tree().create_timer(0.01).timeout
 	animation.play("jump_right")
 
 func _physics_process(delta):
@@ -72,7 +91,7 @@ func _physics_process(delta):
 	if not is_on_floor() && boosted_time == 0:
 		var amplifier = 1.0
 		if gravity_timer.is_stopped():
-			amplifier = 1.75
+			amplifier = 1.25
 		velocity.y += gravity * delta * amplifier
 	if Input.is_action_just_pressed("main_shoot"):
 		$Node2D/brosse_pos/brosse/return_poop.play("return_anim", -1, 1, false)

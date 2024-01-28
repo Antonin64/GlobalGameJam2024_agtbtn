@@ -18,5 +18,5 @@ func _on_area_2d_body_entered(body):
 	if body == player && timer.is_stopped():
 		animation.play("animate")
 		await get_tree().create_timer(0.1).timeout
-		player.jump_pad(rotation_degrees)
+		player.jump_pad_right(rotation_degrees)
 		timer.start()

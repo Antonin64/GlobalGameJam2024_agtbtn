@@ -273,4 +273,7 @@ position = Vector2(-0.0718451, 0.827713)
 scale = Vector2(8.88209, 5.36366)
 shape = SubResource("RectangleShape2D_4njtk")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -50)
+
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
