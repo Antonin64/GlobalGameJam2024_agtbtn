@@ -28,9 +28,10 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_moof5"]
+radius = 9.64154
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbhns"]
-size = Vector2(2.15871, 42)
+size = Vector2(7.05952, 42)
 
 [node name="body" type="CharacterBody2D"]
 collision_layer = 0
@@ -59,6 +60,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.0257, 0)
 shape = SubResource("CapsuleShape2D_moof5")
 
 [node name="return_zone" type="Area2D" parent="."]
@@ -67,7 +69,7 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="return_zone"]
-position = Vector2(53.8988, 0)
+position = Vector2(56.3988, 0)
 scale = Vector2(1.02024, 1.12026)
 shape = SubResource("RectangleShape2D_xbhns")
 

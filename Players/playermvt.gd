@@ -14,6 +14,7 @@ var boosted_time = 0
 const bulletPath = preload('res://weapons/bullet.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var on_floor_before = false
 
 @onready var sprite = $"Sprite2D"
 @onready var coyote_timer = $"CoyoteTimer"
@@ -61,7 +62,8 @@ func _physics_process(delta):
 		animation.play("idle")
 	
 	if is_on_floor():
-		if coyote_timer.time_left == 0:
+		on_floor_before = true
+		if on_floor_before == false:
 			$AudioStreamPlayer2.play()
 		can_double_jump = true
 		boosted_dir = 0
