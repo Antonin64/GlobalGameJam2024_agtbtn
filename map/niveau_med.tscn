@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://jx40ra4cyy3p"]
+[gd_scene load_steps=25 format=3 uid="uid://jx40ra4cyy3p"]
 
 [ext_resource type="Texture2D" uid="uid://bioluesgi57ik" path="res://map/warped-files/warped-files/PNG/environment/layers/props.png" id="1_7eggb"]
 [ext_resource type="Texture2D" uid="uid://cglxxyt0e1ige" path="res://sprite/gdm-grotto-escape-ii-environment/GDM-grotto-escape-2-FILES/PNG/environment-background.png" id="1_oesov"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bl3f3rxnthbsk" path="res://Enemies/Patterns_Enemy1/pattern3.tscn" id="13_h3gnr"]
 [ext_resource type="PackedScene" uid="uid://bci78i48hooie" path="res://Traps/Killing_Area/Killing_Area.tscn" id="14_be1fi"]
 [ext_resource type="PackedScene" uid="uid://cpjsaae7c7qog" path="res://Traps/spear/spear.tscn" id="15_ggdoa"]
+[ext_resource type="AudioStream" uid="uid://cth657quae8tp" path="res://map/map_sounds/ahhhh_type_beat_1.ogg" id="18_iqy8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpj4k"]
 texture = ExtResource("1_7eggb")
@@ -6532,7 +6533,7 @@ position = Vector2(2762, 170)
 rotation = -3.14159
 
 [node name="SpikeTrap17" parent="spike" instance=ExtResource("8_8st21")]
-position = Vector2(1592, 40)
+position = Vector2(1593, 40)
 
 [node name="SpikeTrap18" parent="spike" instance=ExtResource("8_8st21")]
 position = Vector2(1574, 279)
@@ -6794,5 +6795,10 @@ position = Vector2(2896, 209)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(46, -9)
 shape = SubResource("RectangleShape2D_tmlw5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_iqy8y")
+volume_db = -6.648
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
