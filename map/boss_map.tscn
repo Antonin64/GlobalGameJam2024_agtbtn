@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://n4uktacaw34p"]
+
+[ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="1_nhpd3"]
+[ext_resource type="PackedScene" uid="uid://d2ada8b3gehdo" path="res://boss/boss.tscn" id="2_xmilg"]
+
+[node name="BossMap" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_nhpd3")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Boss" parent="." instance=ExtResource("2_xmilg")]
