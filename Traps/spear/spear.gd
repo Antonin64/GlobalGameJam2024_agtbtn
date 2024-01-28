@@ -33,5 +33,6 @@ func _on_area_2_dopen_body_entered(body):
 
 
 func _on_timer_timeout():
+	timer.stop()
 	is_open = true
 	animation.play("move")
