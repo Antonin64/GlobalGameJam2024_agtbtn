@@ -9,5 +9,5 @@ func launch_next_map():
 
 func _on_area_2d_body_entered(body):
 	if body == get_node("CharacterBody2D"):
-		Global.scene = "res://map/niveau_med.tscn"
+		Global.scene = "res://map/boss_map.tscn"
 		launch_next_map()

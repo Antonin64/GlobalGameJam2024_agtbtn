@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://caaikdcvngdu5"]
+[gd_scene load_steps=16 format=3 uid="uid://caaikdcvngdu5"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_b5lag"]
 [ext_resource type="Script" path="res://map/didac_map.gd" id="2_nfcjl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bmecfe2pe3d21" path="res://Enemies/Patterns_Enemy1/pattern2.tscn" id="8_yq3r0"]
 [ext_resource type="PackedScene" uid="uid://b53gotj71uhq" path="res://Enemies/Patterns_Enemy2/pattern2.tscn" id="9_2q53y"]
 [ext_resource type="PackedScene" uid="uid://b57vwrxkwsld1" path="res://Traps/jumper/jumper.tscn" id="10_7j7aq"]
+[ext_resource type="AudioStream" uid="uid://cxsfdbqtgqrbj" path="res://map/map_sounds/chill_beat.mp3" id="12_ktdpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u81hq"]
 texture = ExtResource("1_b5lag")
@@ -19086,5 +19087,10 @@ position = Vector2(3500, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(105.5, 196)
 shape = SubResource("RectangleShape2D_urgmk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ktdpn")
+volume_db = -10.54
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
