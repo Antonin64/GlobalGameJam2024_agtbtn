@@ -8,6 +8,7 @@ func _ready():
 	player = get_node(player_path)
 
 func Kill():
+	$"../AudioStreamPlayer".play()
 	$"../GPUParticles2D".emitting = true
 	queue_free()
 

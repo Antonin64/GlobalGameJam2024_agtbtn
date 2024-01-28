@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3wgwilssrdns"]
+[gd_scene load_steps=6 format=3 uid="uid://3wgwilssrdns"]
 
 [ext_resource type="Texture2D" uid="uid://laesd46d6k6m" path="res://Traps/mine/Explosive lethal weapon cartoon illustration set.png" id="1_gwbmm"]
 [ext_resource type="Script" path="res://Traps/mine/mine_bomb.gd" id="2_0mekt"]
+[ext_resource type="AudioStream" uid="uid://cx4nduawxlgjx" path="res://Traps/mine/sfx_1_-_explosion.wav" id="3_lyd1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy2s4"]
 size = Vector2(600, 233.334)
@@ -41,5 +42,8 @@ amount = 150
 process_material = SubResource("ParticleProcessMaterial_73w6i")
 one_shot = true
 explosiveness = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lyd1x")
 
 [connection signal="body_entered" from="Area2D" to="Sprite2D" method="_on_area_2d_body_entered"]
