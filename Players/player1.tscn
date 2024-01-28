@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=16 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 [ext_resource type="PackedScene" uid="uid://coqjlufwtrms4" path="res://Players/fart_particles.tscn" id="2_6mmvh"]
@@ -158,6 +158,14 @@ scale_min = 2.0
 scale_max = 2.0
 color = Color(1, 0.176471, 0, 1)
 
+[sub_resource type="Animation" id="Animation_15jvh"]
+resource_name = "return_anim"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b642"]
+_data = {
+"return_anim": SubResource("Animation_15jvh")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 17
 collision_mask = 17
@@ -209,5 +217,10 @@ stream = ExtResource("4_pmc0t")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_x3830")
+
+[node name="return_poop" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2b642")
+}
 
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

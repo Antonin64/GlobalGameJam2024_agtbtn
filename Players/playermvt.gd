@@ -72,6 +72,8 @@ func _physics_process(delta):
 		if gravity_timer.is_stopped():
 			amplifier = 1.75
 		velocity.y += gravity * delta * amplifier
+	if Input.is_action_just_pressed("main_shoot"):
+		$return_poop.play("return_anim", -1, 1, false)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
