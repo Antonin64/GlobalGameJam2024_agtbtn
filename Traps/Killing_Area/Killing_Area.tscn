@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bci78i48hooie"]
+
+[ext_resource type="Script" path="res://Traps/spiketrap/spike_trap.gd" id="1_kbbnn"]
+
+[node name="SpikeTrap" type="Node2D"]
+script = ExtResource("1_kbbnn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -10, 10, 10, -10, 10)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
