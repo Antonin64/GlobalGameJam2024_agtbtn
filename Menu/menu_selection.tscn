@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfi26wvcju3ha"]
+
+[ext_resource type="Script" path="res://Menu/menu_selection.gd" id="1_lh2kn"]
+
+[node name="Menu_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lh2kn")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Menu"]
+anchors_preset = -1
+anchor_left = 0.456
+anchor_top = 0.326
+anchor_right = 0.544
+anchor_bottom = 0.674
+offset_left = -0.312012
+offset_top = -0.248001
+offset_right = 0.311951
+offset_bottom = 0.247986
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+
+[node name="Didactitiel" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Level 1")
+theme_override_font_sizes/font_size = 40
+text = "Didactitiel"
+
+[node name="Level 1" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Didactitiel")
+focus_neighbor_bottom = NodePath("../Level 2")
+theme_override_font_sizes/font_size = 40
+text = "Level 1"
+
+[node name="Level 2" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level 1")
+focus_neighbor_bottom = NodePath("../Boss")
+theme_override_font_sizes/font_size = 40
+text = "Level 2"
+
+[node name="Boss" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Level 2")
+theme_override_font_sizes/font_size = 40
+text = "Boss"
+
+[connection signal="pressed" from="Menu/ButtonsContainer/Didactitiel" to="." method="_on_didactitiel_pressed"]
+[connection signal="pressed" from="Menu/ButtonsContainer/Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Menu/ButtonsContainer/Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Menu/ButtonsContainer/Boss" to="." method="_on_boss_pressed"]
