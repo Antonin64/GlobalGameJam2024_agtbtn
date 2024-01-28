@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpjsaae7c7qog"]
+
+[ext_resource type="Texture2D" uid="uid://wc22sedch8uf" path="res://Traps/spear/Spear.png" id="1_0wyst"]
+[ext_resource type="Script" path="res://Traps/spear/spear.gd" id="1_rq5qn"]
+
+[sub_resource type="Animation" id="Animation_ohkjr"]
+resource_name = "move"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_6b17q"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2gou"]
+_data = {
+"idle": SubResource("Animation_6b17q"),
+"move": SubResource("Animation_ohkjr")
+}
+
+[node name="SpearTrap" type="Node2D"]
+script = ExtResource("1_rq5qn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -26)
+scale = Vector2(1.25, 0.811383)
+texture = ExtResource("1_0wyst")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_m2gou")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.5, -24.3125)
+scale = Vector2(4.6875, 3.95833)
+polygon = PackedVector2Array(1, 4, 1, 4, 1, 6, -1, 6, -1, 4, 0, 3)
+
+[node name="Area2Dopen" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2Dopen"]
+position = Vector2(0.5, -26.5)
+scale = Vector2(5.3125, 4.32292)
+polygon = PackedVector2Array(0, -6, 1, -5, 1, 6, -1, 6, -1, -4, -1, -5, 0, -6, 1, -5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2Dopen" to="." method="_on_area_2_dopen_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

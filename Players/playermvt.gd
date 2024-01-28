@@ -76,7 +76,7 @@ func _physics_process(delta):
 		$return_poop.play("return_anim", -1, 1, false)
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or not coyote_timer.is_stopped()):
+	if Input.is_action_just_pressed("jump") and (is_on_floor()):
 		$AudioStreamPlayer.play()
 		velocity.y = JUMP_VELOCITY * 0.80
 		gravity_timer.start()
