@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=18 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 [ext_resource type="PackedScene" uid="uid://coqjlufwtrms4" path="res://Players/fart_particles.tscn" id="2_6mmvh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://okrql7ldrfpg" path="res://Players/Goblin King Sprite Sheet.png" id="3_xvimr"]
 [ext_resource type="AudioStream" uid="uid://c0y5n3k0s8q52" path="res://Players/sfx_6_-_jump.wav" id="4_pmc0t"]
 [ext_resource type="AudioStream" uid="uid://owxf43iqmrj8" path="res://Players/sfx_10_die.mp3" id="6_x3830"]
+[ext_resource type="Texture2D" uid="uid://dkodd3ef71fha" path="res://Players/toilet_brush.png" id="7_sl734"]
 
 [sub_resource type="Animation" id="Animation_07ecv"]
 resource_name = "idle"
@@ -160,11 +161,39 @@ color = Color(1, 0.176471, 0, 1)
 
 [sub_resource type="Animation" id="Animation_15jvh"]
 resource_name = "return_anim"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/brosse_pos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 40), Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.14159, -0.523599]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2b642"]
 _data = {
 "return_anim": SubResource("Animation_15jvh")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4njtk"]
+size = Vector2(2.04607, 11.3599)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 17
@@ -218,9 +247,30 @@ stream = ExtResource("4_pmc0t")
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_x3830")
 
-[node name="return_poop" type="AnimationPlayer" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+rotation = -1.8326
+
+[node name="brosse_pos" type="Node2D" parent="Node2D"]
+position = Vector2(0, -3000)
+
+[node name="brosse" type="Sprite2D" parent="Node2D/brosse_pos"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_sl734")
+
+[node name="return_poop" type="AnimationPlayer" parent="Node2D/brosse_pos/brosse"]
+root_node = NodePath("../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_2b642")
 }
+
+[node name="Area2D" type="Area2D" parent="Node2D/brosse_pos"]
+scale = Vector2(1.01423, 1.0043)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/brosse_pos/Area2D"]
+position = Vector2(-0.0718451, 0.827713)
+scale = Vector2(8.88209, 5.36366)
+shape = SubResource("RectangleShape2D_4njtk")
 
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

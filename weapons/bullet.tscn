@@ -31,7 +31,7 @@ _data = {
 radius = 9.64154
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbhns"]
-size = Vector2(7.05952, 42)
+size = Vector2(28.4247, 42)
 
 [node name="body" type="CharacterBody2D"]
 collision_layer = 0
@@ -69,7 +69,7 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="return_zone"]
-position = Vector2(56.3988, 0)
+position = Vector2(45.5, 0)
 scale = Vector2(1.02024, 1.12026)
 shape = SubResource("RectangleShape2D_xbhns")
 
