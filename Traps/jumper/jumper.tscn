@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b57vwrxkwsld1"]
+[gd_scene load_steps=9 format=3 uid="uid://b57vwrxkwsld1"]
 
 [ext_resource type="Script" path="res://Traps/jumper/jumper.gd" id="1_x7o1t"]
 [ext_resource type="Texture2D" uid="uid://7ogr5a0mcxau" path="res://Traps/jumper/Jumper.png" id="2_4j3x5"]
+[ext_resource type="AudioStream" uid="uid://bn1f8om0x83vc" path="res://Traps/jumper/sfx_11_-_jump_pad.ogg" id="3_5uns6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy2s4"]
 size = Vector2(600, 316.667)
@@ -77,5 +78,9 @@ explosiveness = 1.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.45
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5uns6")
+volume_db = 12.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
