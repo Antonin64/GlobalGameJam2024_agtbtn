@@ -741,7 +741,7 @@ zoom = Vector2(2.05, 2.05)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ctmwy")
-volume_db = -2.0
+volume_db = -3.0
 autoplay = true
 
 [node name="spikes" type="Node2D" parent="."]

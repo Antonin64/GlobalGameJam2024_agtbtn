@@ -32,9 +32,9 @@ func _process(delta):
 				$Animation.play("phase3", -1, 1, false)
 				attack_speed = 0.5
 			if phase == 4:
-				print("LE BOSS EST MOOOORT")
 				$Animation.stop()
 				queue_free()
+				get_tree().change_scene_to_file("res://Menu/menu_selection.tscn")
 	else:
 		if time_count > attack_speed:
 			time_count = 0
@@ -58,6 +58,7 @@ func fire_poop():
 	bullet.look_at(player_pos)
 	bullet.global_position = self.global_position
 	bullet.bullet_velocity = player_pos - self.global_position
+	$throw_poop.play()
 
 func fire_poop_red():
 	var player_pos = get_parent().get_parent().get_node("CharacterBody2D").global_position
@@ -66,10 +67,12 @@ func fire_poop_red():
 	bullet.look_at(player_pos)
 	bullet.global_position = self.global_position
 	bullet.bullet_velocity = player_pos - self.global_position
+	$throw_poop.play()
 
 func lose_hp():
 	hp -= 1
 	$GPUParticles2D2.restart()
+	$take_hit.play()
 	if hp == 0:
 		phase += 1
 		time_anim = 0
