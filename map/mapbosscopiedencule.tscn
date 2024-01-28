@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dehldkwpr6lau"]
+[gd_scene load_steps=14 format=3 uid="uid://bfgc2rn70jmmn"]
 
 [ext_resource type="Script" path="res://map/mapbosscopiedencule.gd" id="1_dyq1s"]
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="2_ofrg4"]
 [ext_resource type="Texture2D" uid="uid://kkfqmo0jehgg" path="res://map/tileset/tileset1.png" id="3_qpe5w"]
 [ext_resource type="Texture2D" uid="uid://bioluesgi57ik" path="res://map/warped-files/warped-files/PNG/environment/layers/props.png" id="4_ywjvf"]
 [ext_resource type="Texture2D" uid="uid://rx4ytvyo5i10" path="res://map/warped-files/warped-files/PNG/environment/layers/walls.png" id="5_8ew1o"]
-[ext_resource type="PackedScene" uid="uid://ck1rny2ji3fe8" path="res://map/parallax_background.tscn" id="6_dmyyp"]
+[ext_resource type="PackedScene" uid="uid://bex30uc8uwdv3" path="res://map/parallax_background.tscn" id="6_dmyyp"]
 [ext_resource type="PackedScene" uid="uid://d2ada8b3gehdo" path="res://boss/boss.tscn" id="7_gbhu1"]
+[ext_resource type="AudioStream" uid="uid://c4k1y0nteuyiu" path="res://map/map_sounds/ahhhh_drill_beat.ogg" id="8_ctmwy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfr2s"]
 texture = ExtResource("3_qpe5w")
@@ -725,3 +726,8 @@ shape = SubResource("RectangleShape2D_oxbf6")
 [node name="boss_battle_cam" type="Camera2D" parent="."]
 position = Vector2(635, -225)
 zoom = Vector2(1.25, 1.25)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ctmwy")
+volume_db = -10.576
+autoplay = true
