@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpjsaae7c7qog"]
+[gd_scene load_steps=7 format=3 uid="uid://cpjsaae7c7qog"]
 
 [ext_resource type="Texture2D" uid="uid://wc22sedch8uf" path="res://Traps/spear/Spear.png" id="1_0wyst"]
 [ext_resource type="Script" path="res://Traps/spear/spear.gd" id="1_rq5qn"]
+[ext_resource type="AudioStream" uid="uid://dk081b35e8ssg" path="res://Traps/spear/sfx_10_-_spear.wav" id="3_ep6ar"]
 
 [sub_resource type="Animation" id="Animation_6b17q"]
 resource_name = "idle"
@@ -73,6 +74,11 @@ polygon = PackedVector2Array(0, -6, 1, -5, 1, 6, -1, 6, -1, -4, -1, -5, 0, -6, 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ep6ar")
+max_distance = 1000.0
+attenuation = 5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2Dopen" to="." method="_on_area_2_dopen_body_entered"]
