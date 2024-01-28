@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjbkffsbk26c5"]
+[gd_scene load_steps=6 format=3 uid="uid://p4gntn2ynju"]
 
 [sub_resource type="Gradient" id="Gradient_lx8hv"]
 offsets = PackedFloat32Array(0, 0.220588, 0.455882, 0.647059, 0.845588, 1)
@@ -28,5 +28,3 @@ color_initial_ramp = SubResource("GradientTexture1D_51gaf")
 emitting = false
 amount = 5000
 process_material = SubResource("ParticleProcessMaterial_3jokb")
-lifetime = 5.0
-one_shot = true
