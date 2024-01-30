@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfi26wvcju3ha"]
+[gd_scene load_steps=3 format=3 uid="uid://cj1wtkgm6d8gw"]
 
 [ext_resource type="Script" path="res://Menu/menu_selection.gd" id="1_lh2kn"]
+[ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="2_lnmqx"]
 
 [node name="Menu_selection" type="Control"]
 layout_mode = 3
@@ -53,6 +54,10 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Level 2")
 theme_override_font_sizes/font_size = 40
 text = "Boss"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lnmqx")
+centered = false
 
 [connection signal="pressed" from="Menu/ButtonsContainer/Didactitiel" to="." method="_on_didactitiel_pressed"]
 [connection signal="pressed" from="Menu/ButtonsContainer/Level 1" to="." method="_on_level_1_pressed"]

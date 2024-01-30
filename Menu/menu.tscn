@@ -1,52 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddg57u1457x4q"]
+[gd_scene load_steps=3 format=3 uid="uid://ddg57u1457x4q"]
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_th00h"]
+[ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="2_4xu1f"]
 
 [node name="Menu_principal" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+size_flags_stretch_ratio = 3.12
 script = ExtResource("1_th00h")
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="Menu"]
+[node name="ButtonsContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.456
-anchor_top = 0.326
-anchor_right = 0.544
-anchor_bottom = 0.674
-offset_left = -0.312012
-offset_top = -0.248001
-offset_right = 0.311951
-offset_bottom = 0.247986
+anchor_left = 0.399
+anchor_top = 0.2
+anchor_right = 0.601
+anchor_bottom = 0.8
+offset_left = -0.14801
+offset_top = -0.100006
+offset_right = 0.14801
+offset_bottom = 0.0999756
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_constants/separation = 100
 
-[node name="Start" type="Button" parent="Menu/ButtonsContainer"]
+[node name="Start" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Select Level")
 theme_override_font_sizes/font_size = 40
 text = "Start"
 
-[node name="Select Level" type="Button" parent="Menu/ButtonsContainer"]
+[node name="Select Level" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 40
 text = "Select Level"
 
-[node name="Quit" type="Button" parent="Menu/ButtonsContainer"]
+[node name="Quit" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Select Level")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
-[connection signal="pressed" from="Menu/ButtonsContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/ButtonsContainer/Select Level" to="." method="_on_select_level_pressed"]
-[connection signal="pressed" from="Menu/ButtonsContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4xu1f")
+centered = false
+
+[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Select Level" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Quit" to="." method="_on_quit_pressed"]

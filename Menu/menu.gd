@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	$Menu/ButtonsContainer/Start.grab_focus()
+	$CanvasLayer/ButtonsContainer/Start.grab_focus()
 
 func _on_start_pressed():
 	Global.scene = "res://map/didac_map.tscn"
