@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://caaikdcvngdu5"]
+[gd_scene load_steps=16 format=3 uid="uid://caaikdcvngdu5"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_b5lag"]
 [ext_resource type="Script" path="res://map/didac_map.gd" id="2_nfcjl"]
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="2_xwtf0"]
 [ext_resource type="Texture2D" uid="uid://bd6xpegjn24dx" path="res://sprite/pixel_ocean_and_sky_background/1.png" id="4_bsnyx"]
-[ext_resource type="Texture2D" uid="uid://blsge0w7r2jll" path="res://sprite/pixel_ocean_and_sky_background/2.png" id="5_upale"]
 [ext_resource type="Texture2D" uid="uid://cjvki73lomg3a" path="res://sprite/pixel_ocean_and_sky_background/3.png" id="6_7kwf7"]
 [ext_resource type="PackedScene" uid="uid://3wgwilssrdns" path="res://Traps/mine/mine.tscn" id="6_a5qyr"]
 [ext_resource type="PackedScene" uid="uid://cyl3byfeeb71n" path="res://Traps/spiketrap/spike_trap.tscn" id="7_kni6m"]
@@ -18929,86 +18928,6 @@ position = Vector2(-502, -21)
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0.333333, -106.333)
-texture = ExtResource("4_bsnyx")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(-0.666667, -106)
-texture = ExtResource("5_upale")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0.333333, -106.667)
-texture = ExtResource("6_7kwf7")
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1680, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(0.333333, -106.333)
-texture = ExtResource("4_bsnyx")
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1680, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2(-0.666667, -106)
-texture = ExtResource("5_upale")
-centered = false
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1680, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-position = Vector2(0.333333, -106.667)
-texture = ExtResource("6_7kwf7")
-centered = false
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(3360, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
-position = Vector2(0.333333, -106.333)
-texture = ExtResource("4_bsnyx")
-centered = false
-
-[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(3360, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer8"]
-position = Vector2(-0.666667, -106)
-texture = ExtResource("5_upale")
-centered = false
-
-[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(3360, 0)
-scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer9"]
-position = Vector2(0.333333, -106.667)
-texture = ExtResource("6_7kwf7")
-centered = false
-
 [node name="Mine" parent="." instance=ExtResource("6_a5qyr")]
 position = Vector2(164, 0)
 
@@ -19101,5 +19020,20 @@ shape = SubResource("RectangleShape2D_urgmk")
 stream = ExtResource("12_ktdpn")
 volume_db = -10.54
 autoplay = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(-187, -680.998)
+scale = Vector2(6, 6)
+texture = ExtResource("4_bsnyx")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(-187, -682)
+scale = Vector2(6, 6)
+texture = ExtResource("6_7kwf7")
+centered = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
