@@ -13,14 +13,15 @@ func http_submit(_result, _response_code, _headers, _body, http):
 	http.queue_free()
 	pass
 
-func add_score(lvl_time):
+func add_score(lvl_time, lvl):
 	var http = HTTPRequest.new()
 	http.connect("request_completed", http_submit, 0)
 	add_child(http)
 	
 	var user_data = client.query_string_from_dict({
 		"entry.1996424206": Global.username,
-		"entry.1284922852": lvl_time
+		"entry.1284922852": lvl_time,
+		"entry.991293941": lvl
 	})
 	var err = http.request(url_submit, headers, HTTPClient.METHOD_POST, user_data)
 	if err:

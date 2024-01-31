@@ -9,6 +9,7 @@ var attack_speed = 2
 var rng = RandomNumberGenerator.new()
 var time_anim = 0
 var transition = false
+var lvl_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	lvl_time += delta
 	time_anim += delta
 	time_count += delta
 	if transition:
@@ -32,6 +34,9 @@ func _process(delta):
 				$Animation.play("phase3", -1, 1, false)
 				attack_speed = 0.5
 			if phase == 4:
+				var result = snapped(lvl_time, 0.01)
+				if len(Global.username) > 0:
+					ScoreTab_gd.add_score(str(result), "3")
 				$Animation.stop()
 				queue_free()
 				get_tree().change_scene_to_file("res://Menu/menu_selection.tscn")
