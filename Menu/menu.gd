@@ -20,7 +20,7 @@ func _on_select_level_pressed():
 		Global.username = $Username.text
 		get_tree().change_scene_to_file("res://Menu/menu_selection.tscn")
 
-func _on_check_button_toggled(toggled_on):
+func _on_check_button_toggled(_toggled_on):
 	if Global.hardcore == false:
 		Global.hardcore = true
 	else:

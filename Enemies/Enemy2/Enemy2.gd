@@ -15,7 +15,7 @@ func _ready():
 	state_machine.start("walk", true)
 	last_position = global_position
 
-func _process(delta):
+func _process(_delta):
 	get_animation_for(last_position - global_position)
 	last_position = global_position
 	

@@ -8,7 +8,7 @@ func _ready():
 	$CanvasLayer/AspectRatioContainer/ButtonsContainer/RetryBtn.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_retry_btn_pressed():

@@ -20,7 +20,7 @@ func _ready():
 	state_machine.start("fly", true)
 	last_position = global_position
 
-func _process(delta):
+func _process(_delta):
 	if state_machine.get_current_node() == "End":
 		queue_free()
 	get_animation_for(last_position - global_position)
