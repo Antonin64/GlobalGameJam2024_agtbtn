@@ -1,7 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddg57u1457x4q"]
+[gd_scene load_steps=11 format=3 uid="uid://ddg57u1457x4q"]
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_th00h"]
 [ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="2_4xu1f"]
+[ext_resource type="Shader" path="res://Menu/menu.gdshader" id="2_ppiao"]
+[ext_resource type="Shader" path="res://Menu/backdown.gdshader" id="4_fu4ja"]
+[ext_resource type="Texture2D" uid="uid://0jda4yulmy8e" path="res://sprite/lala-removebg-preview.png" id="5_bwvb0"]
+[ext_resource type="FontFile" uid="uid://be8xmeqg84k1a" path="res://Font/04b_30/04B_30__.TTF" id="7_0q0hc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_safow"]
+shader = ExtResource("2_ppiao")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xo5b"]
+shader = ExtResource("4_fu4ja")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hsel"]
+font = ExtResource("7_0q0hc")
+font_size = 45
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_4wbii"]
 
@@ -67,9 +85,38 @@ theme_override_constants/h_separation = 14
 theme_override_font_sizes/font_size = 18
 text = "Hardcore Mode"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_safow")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_4xu1f")
-centered = false
+
+[node name="TextureRect2" type="TextureRect" parent="background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4xo5b")
+layout_mode = 0
+offset_left = -31.0
+offset_top = 835.0
+offset_right = 1949.0
+offset_bottom = 1169.0
+texture = ExtResource("5_bwvb0")
+
+[node name="Label" type="Label" parent="background"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 214.0
+offset_right = 957.0
+offset_bottom = 260.0
+rotation = -0.312687
+text = "Fart Adventure"
+label_settings = SubResource("LabelSettings_1hsel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -89,6 +136,17 @@ theme = SubResource("Theme_4wbii")
 theme_type_variation = &"HeaderLarge"
 text = "Enter your name before starting :"
 
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 1533.0
+offset_top = 970.0
+offset_right = 1623.0
+offset_bottom = 993.0
+scale = Vector2(4, 4)
+text = "ScoreBoard"
+underline = 1
+uri = "https://docs.google.com/spreadsheets/d/1ZxVLZschfq7hx_I2dIUXw8hjRlVX9oSwrsuxJWQUJ-o/edit?resourcekey#gid=1613341898"
+
 [node name="Username" type="LineEdit" parent="."]
 layout_mode = 1
 offset_left = 794.0
@@ -100,17 +158,6 @@ placeholder_text = "Enter you name"
 alignment = 1
 max_length = 15
 expand_to_text_length = true
-
-[node name="LinkButton" type="LinkButton" parent="."]
-layout_mode = 0
-offset_left = 1533.0
-offset_top = 970.0
-offset_right = 1623.0
-offset_bottom = 993.0
-scale = Vector2(4, 4)
-text = "ScoreBoard"
-underline = 1
-uri = "https://docs.google.com/spreadsheets/d/1ZxVLZschfq7hx_I2dIUXw8hjRlVX9oSwrsuxJWQUJ-o/edit?resourcekey#gid=1613341898"
 
 [connection signal="pressed" from="CanvasLayer/ButtonsContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonsContainer/Select Level" to="." method="_on_select_level_pressed"]

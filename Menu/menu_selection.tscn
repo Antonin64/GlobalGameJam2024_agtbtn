@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfi26wvcju3ha"]
+[gd_scene load_steps=10 format=3 uid="uid://bfi26wvcju3ha"]
 
 [ext_resource type="Script" path="res://Menu/menu_selection.gd" id="1_lh2kn"]
 [ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="2_lnmqx"]
+[ext_resource type="Shader" path="res://Menu/menu.gdshader" id="2_ypqog"]
+[ext_resource type="Shader" path="res://Menu/backdown.gdshader" id="4_svbka"]
+[ext_resource type="Texture2D" uid="uid://0jda4yulmy8e" path="res://sprite/lala-removebg-preview.png" id="5_gejay"]
+[ext_resource type="FontFile" uid="uid://be8xmeqg84k1a" path="res://Font/04b_30/04B_30__.TTF" id="6_64ut0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3iik1"]
+shader = ExtResource("2_ypqog")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8t53"]
+shader = ExtResource("4_svbka")
+
+[sub_resource type="LabelSettings" id="LabelSettings_itjvt"]
+font = ExtResource("6_64ut0")
+font_size = 45
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Menu_selection" type="Control"]
 layout_mode = 3
@@ -55,9 +73,39 @@ focus_neighbor_top = NodePath("../Level 2")
 theme_override_font_sizes/font_size = 40
 text = "Boss"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3iik1")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_lnmqx")
-centered = false
+
+[node name="TextureRect2" type="TextureRect" parent="background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_k8t53")
+layout_mode = 0
+offset_left = -31.0
+offset_top = 835.0
+offset_right = 1949.0
+offset_bottom = 1169.0
+texture = ExtResource("5_gejay")
+
+[node name="Label" type="Label" parent="background"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 251.0
+offset_right = 1076.0
+offset_bottom = 297.0
+rotation = -0.312687
+text = "Chose your level"
+label_settings = SubResource("LabelSettings_itjvt")
 
 [connection signal="pressed" from="Menu/ButtonsContainer/Didactitiel" to="." method="_on_didactitiel_pressed"]
 [connection signal="pressed" from="Menu/ButtonsContainer/Level 1" to="." method="_on_level_1_pressed"]

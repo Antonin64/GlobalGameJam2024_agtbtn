@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnse4x3wws41k"]
+[gd_scene load_steps=10 format=3 uid="uid://dnse4x3wws41k"]
 
 [ext_resource type="Script" path="res://Menu/Death/DeathMenu.gd" id="1_dphab"]
+[ext_resource type="Shader" path="res://Menu/Death/DeathMenu.gdshader" id="2_lxp00"]
+[ext_resource type="Shader" path="res://Menu/Death/DeathMenu2.gdshader" id="2_sjixa"]
+[ext_resource type="FontFile" uid="uid://be8xmeqg84k1a" path="res://Font/04b_30/04B_30__.TTF" id="2_tx808"]
+[ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="3_erlvv"]
+[ext_resource type="Texture2D" uid="uid://0jda4yulmy8e" path="res://sprite/lala-removebg-preview.png" id="6_aab83"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2056"]
+shader = ExtResource("2_lxp00")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nyg0"]
+font = ExtResource("2_tx808")
+font_size = 90
+font_color = Color(1, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4roxd"]
+shader = ExtResource("2_sjixa")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -34,6 +54,46 @@ text = "Retry"
 [node name="QuitBtn" type="Button" parent="CanvasLayer/AspectRatioContainer/ButtonsContainer"]
 layout_mode = 2
 text = "Rage Quit"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_v2056")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.1
+anchor_bottom = 27.05
+offset_right = -4.00012
+offset_bottom = -2.0
+texture = ExtResource("3_erlvv")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.009
+anchor_bottom = 26.96
+offset_left = 587.0
+offset_top = 284.0
+offset_right = -574.36
+offset_bottom = -703.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_3nyg0")
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4roxd")
+layout_mode = 0
+offset_left = -6.0
+offset_top = 779.0
+offset_right = 1941.0
+offset_bottom = 1185.0
+texture = ExtResource("6_aab83")
 
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/ButtonsContainer/RetryBtn" to="." method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/ButtonsContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
