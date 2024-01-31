@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://d20apt1k8xice"]
+[gd_scene load_steps=103 format=3 uid="uid://d20apt1k8xice"]
 
 [ext_resource type="PackedScene" uid="uid://c25k0u4cnkcj" path="res://Players/player1.tscn" id="1_4i3co"]
 [ext_resource type="Script" path="res://map/Maptuto.gd" id="1_rq0i3"]
@@ -79,6 +79,7 @@
 [ext_resource type="Texture2D" uid="uid://dg08p16cn2vm1" path="res://map/Portal20/Portal19/images/convert_45.png" id="76_fosqw"]
 [ext_resource type="Texture2D" uid="uid://xevtthogeqf5" path="res://map/Portal20/Portal19/images/convert_53.png" id="77_xaw8w"]
 [ext_resource type="Texture2D" uid="uid://bv75gyhevmev3" path="res://map/Portal20/Portal19/images/convert_61.png" id="78_2dbuu"]
+[ext_resource type="AudioStream" uid="uid://bldipk1a4aq6d" path="res://map/map_sounds/ahhhh_type_beat_2.ogg" id="80_7isj2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tnk7h"]
 animations = [{
@@ -2066,5 +2067,10 @@ position = Vector2(749, -194)
 
 [node name="SpearTrap" parent="Spears" instance=ExtResource("13_j27m1")]
 position = Vector2(762, -194)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_7isj2")
+volume_db = -7.0
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
