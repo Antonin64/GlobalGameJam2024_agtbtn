@@ -5,6 +5,7 @@ var send_preload = preload("res://scores/score tab.tscn")
 func _ready():
 	$CanvasLayer/CheckButton.button_pressed = Global.hardcore
 	$CanvasLayer/ButtonsContainer/Start.grab_focus()
+	$Username.text = Global.username
 
 func _on_start_pressed():
 	Global.username = $Username.text

@@ -9,7 +9,7 @@ const url_submit = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScLVNU7gi48d_qQ
 const headers = ["Content-Type: application/x-www-form-urlencoded"]
 var client = HTTPClient.new()
 
-func http_submit(_result, _response_code, _headers, _body, http):
+func http_submit(result, response_code, headers, body, http):
 	http.queue_free()
 	pass
 

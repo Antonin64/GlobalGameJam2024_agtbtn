@@ -49,10 +49,12 @@ theme_override_constants/separation = 100
 
 [node name="RetryBtn" type="Button" parent="CanvasLayer/AspectRatioContainer/ButtonsContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Retry"
 
 [node name="QuitBtn" type="Button" parent="CanvasLayer/AspectRatioContainer/ButtonsContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Rage Quit"
 
 [node name="Control" type="Control" parent="."]
