@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj1wtkgm6d8gw"]
+[gd_scene load_steps=3 format=3 uid="uid://bfi26wvcju3ha"]
 
 [ext_resource type="Script" path="res://Menu/menu_selection.gd" id="1_lh2kn"]
 [ext_resource type="Texture2D" uid="uid://cvcjnt6ydejdg" path="res://sprite/pixel_ocean_and_sky_background/4.png" id="2_lnmqx"]

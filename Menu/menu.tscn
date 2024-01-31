@@ -32,6 +32,7 @@ alignment = 1
 
 [node name="Start" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../CheckButton")
 focus_neighbor_bottom = NodePath("../Select Level")
 theme_override_font_sizes/font_size = 40
 text = "Start"
@@ -39,6 +40,7 @@ text = "Start"
 [node name="Select Level" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
+focus_neighbor_right = NodePath("../../CheckButton")
 focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 40
 text = "Select Level"
@@ -46,8 +48,24 @@ text = "Select Level"
 [node name="Quit" type="Button" parent="CanvasLayer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Select Level")
+focus_neighbor_right = NodePath("../../CheckButton")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -387.0
+offset_top = 3.0
+offset_right = -194.0
+offset_bottom = 66.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+focus_neighbor_left = NodePath("../ButtonsContainer/Start")
+theme_override_constants/h_separation = 14
+theme_override_font_sizes/font_size = 18
+text = "Hardcore Mode"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4xu1f")
@@ -97,3 +115,4 @@ uri = "https://docs.google.com/spreadsheets/d/1ZxVLZschfq7hx_I2dIUXw8hjRlVX9oSwr
 [connection signal="pressed" from="CanvasLayer/ButtonsContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonsContainer/Select Level" to="." method="_on_select_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonsContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="CanvasLayer/CheckButton" to="." method="_on_check_button_toggled"]

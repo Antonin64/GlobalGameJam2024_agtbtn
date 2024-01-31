@@ -12,6 +12,8 @@ func _process(delta):
 	pass
 
 func _on_retry_btn_pressed():
+	if Global.hardcore == true:
+		Global.scene = "res://map/didac_map.tscn"
 	var randint = rng.randi_range(0, videos.size() - 1)
 	get_tree().change_scene_to_file(videos[randint])
 
