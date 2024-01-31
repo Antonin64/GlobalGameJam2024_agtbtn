@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1bnlq1yny42d"]
+
+[ext_resource type="Script" path="res://scores/score tab.gd" id="1_1pg0k"]
+
+[node name="ScoreTab" type="Node2D"]
+script = ExtResource("1_1pg0k")

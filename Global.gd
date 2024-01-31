@@ -2,6 +2,7 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var scene = null
+var username = ""
 
 var videos = ["res://Menu/Loading/Bacon.tscn", "res://Menu/Loading/Chips.tscn", "res://Menu/Loading/Dorito.tscn", "res://Menu/Loading/Citron.tscn", "res://Menu/Loading/Micro-onde.tscn", "res://Menu/Loading/Scie-sauteuse.tscn", "res://Menu/Loading/Tondeuse.tscn", "res://Menu/Loading/Tronconneuse.tscn"]
 
