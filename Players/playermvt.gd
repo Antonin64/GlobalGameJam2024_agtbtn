@@ -16,6 +16,7 @@ const bulletPath = preload('res://weapons/bullet.tscn')
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var on_floor_before = false
 var can_fart = true
+var dashing = true
 
 @onready var sprite = $"Sprite2D"
 @onready var coyote_timer = $"CoyoteTimer"
@@ -70,10 +71,14 @@ func dash(amt):
 	can_double_jump = true
 	boosted_dir = amt
 	boosted_time = 10
+	dashing = true
+	print("dashing")
 
 func _physics_process(delta):
 	move_dir = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 	# Add the gravity.
+	if boosted_time > 0:
+		print(boosted_time)
 	if (!is_living):
 		return
 	if move_dir < 0:
@@ -92,8 +97,9 @@ func _physics_process(delta):
 		if on_floor_before == false:
 			$AudioStreamPlayer2.play()
 		can_double_jump = true
-		boosted_dir = 0
-		boosted_time = 0
+		if !dashing:
+			boosted_dir = 0
+			boosted_time = 0
 		coyote_timer.start()
 	if not is_on_floor() && boosted_time == 0:
 		var amplifier = 1.0

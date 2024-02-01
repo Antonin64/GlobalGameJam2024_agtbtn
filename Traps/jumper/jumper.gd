@@ -20,6 +20,7 @@ func _on_area_2d_body_entered(body):
 		var jumpDir = Vector2(0, -1).rotated(deg_to_rad(rotation_degrees))
 		var velocity = jumpDir.normalized()
 		player.velocity.y = velocity.y * 500
+		print(velocity)
 		player.dash(velocity.x * 4)
 		$AudioStreamPlayer2D.play()
 		animation.play("animate")
