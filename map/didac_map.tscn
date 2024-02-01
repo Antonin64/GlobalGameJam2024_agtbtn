@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://caaikdcvngdu5"]
+[gd_scene load_steps=16 format=3 uid="uid://caaikdcvngdu5"]
 
 [ext_resource type="Texture2D" uid="uid://dth38vf6fgadp" path="res://sprite/88117-platform-game-sprite-symmetry-pc-download-hq-png.png" id="1_b5lag"]
 [ext_resource type="Script" path="res://map/didac_map.gd" id="2_nfcjl"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b57vwrxkwsld1" path="res://Traps/jumper/jumper.tscn" id="10_7j7aq"]
 [ext_resource type="AudioStream" uid="uid://cxsfdbqtgqrbj" path="res://map/map_sounds/chill_beat.mp3" id="12_ktdpn"]
 [ext_resource type="PackedScene" uid="uid://cpjsaae7c7qog" path="res://Traps/spear/spear.tscn" id="12_s3y0a"]
-[ext_resource type="PackedScene" uid="uid://da22txi4m5jdk" path="res://Menu/Pause/menu.tscn" id="13_1wu4b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u81hq"]
 texture = ExtResource("1_b5lag")
@@ -18928,8 +18927,6 @@ position = Vector2(-502, -21)
 
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)
-
-[node name="Control" parent="CharacterBody2D/Camera2D2" instance=ExtResource("13_1wu4b")]
 
 [node name="Mine" parent="." instance=ExtResource("6_a5qyr")]
 position = Vector2(164, 0)

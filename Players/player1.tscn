@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c25k0u4cnkcj"]
+[gd_scene load_steps=19 format=3 uid="uid://c25k0u4cnkcj"]
 
 [ext_resource type="Script" path="res://Players/playermvt.gd" id="1_10d2o"]
 [ext_resource type="PackedScene" uid="uid://coqjlufwtrms4" path="res://Players/fart_particles.tscn" id="2_6mmvh"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c0y5n3k0s8q52" path="res://Players/sfx_6_-_jump.wav" id="4_pmc0t"]
 [ext_resource type="AudioStream" uid="uid://owxf43iqmrj8" path="res://Players/sfx_10_die.mp3" id="6_x3830"]
 [ext_resource type="Texture2D" uid="uid://dkodd3ef71fha" path="res://Players/toilet_brush.png" id="7_sl734"]
+[ext_resource type="PackedScene" uid="uid://da22txi4m5jdk" path="res://Menu/Pause/menu.tscn" id="8_ymigp"]
 
 [sub_resource type="Animation" id="Animation_07ecv"]
 resource_name = "idle"
@@ -272,5 +273,7 @@ collision_mask = 16
 position = Vector2(-0.0718451, 0.827713)
 scale = Vector2(8.88209, 5.36366)
 shape = SubResource("RectangleShape2D_4njtk")
+
+[node name="Control" parent="." instance=ExtResource("8_ymigp")]
 
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
