@@ -7,6 +7,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_nhpd3")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 
 [node name="Boss" parent="." instance=ExtResource("2_xmilg")]
