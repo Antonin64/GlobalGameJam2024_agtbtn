@@ -37,6 +37,8 @@ func _process(delta):
 				var result = snapped(lvl_time, 0.01)
 				if len(Global.username) > 0:
 					ScoreTab_gd.add_score(str(result), "3")
+					if Global.hardcore:
+						ScoreTab_gd.add_score("HARDCORE", "4")
 				$Animation.stop()
 				queue_free()
 				get_tree().change_scene_to_file("res://Menu/menu_selection.tscn")
