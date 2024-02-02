@@ -145,7 +145,7 @@ offset_bottom = 993.0
 scale = Vector2(4, 4)
 text = "ScoreBoard"
 underline = 1
-uri = "https://docs.google.com/spreadsheets/d/1ZxVLZschfq7hx_I2dIUXw8hjRlVX9oSwrsuxJWQUJ-o/edit?resourcekey#gid=1613341898"
+uri = "https://docs.google.com/spreadsheets/d/1rOf9Fd4-MhD8Hg8A5EITJ1bd8va_WcCOUXTD2-_QaQk/edit?resourcekey#gid=674139155"
 
 [node name="Username" type="LineEdit" parent="."]
 layout_mode = 1
